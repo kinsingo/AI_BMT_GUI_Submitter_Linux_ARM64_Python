@@ -6,7 +6,7 @@
 ## 1. Environment
 
 - ISA(Instruction Set Architecture) : ARM64(aarch64)
-- OS : Ubuntu 24.04 LTS
+- OS : Ubuntu 22.04 LTS, 24.04 LTS
 - Python Version: **3.8.X ~ 3.12.X supported**
 
 ---
@@ -81,4 +81,11 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
         data.benchmark_model = "ResNet-50"
         data.operating_system = "Windows 10"
         return data
+```
+
+## 5. Start BMT
+using following commands in `AI_BMT_GUI_Submitter_Linux_ARM64_Python/` directory.
+```bash
+export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH
+python main.py
 ```
