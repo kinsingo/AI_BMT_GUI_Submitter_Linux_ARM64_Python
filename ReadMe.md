@@ -1,5 +1,6 @@
 # AI-BMT Platform — Python Submitter Interface
-**Last Updated:** 2025-06-26 — Semantic Segmentation is now supported (example code included)
+
+**Last Updated:** 2025-07-16
 
 ---
 
@@ -12,7 +13,9 @@
 ---
 
 ## 2. Build System Set-up
+
 **1. Install Packages**
+
 - Open a terminal and run the following commands to install CMake, g++ compiler, Ninja Build System, and EGL Library.
   ```bash
   sudo apt update
@@ -24,6 +27,7 @@
   ```
 
 **2. Verify the Installation**
+
 - You can check the versions of the installed tools by running the following commands. If these commands return version information for each tool, the installation was successful.
   ```bash
   cmake --version
@@ -47,7 +51,9 @@ We also provide ONNX Runtime-based example scripts for **Classification**, **Obj
 ## 4. Submitter Development Guide
 
 ### Required Interface
+
 submitter **must** subclass `bmt.AI_BMT_Interface` and implement the following methods:
+
 ```python
 class SubmitterImplementation(bmt.AI_BMT_Interface):
     def Initialize(self, model_path: str) -> None:
@@ -66,6 +72,7 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
 ### Optional Interface
 
 submitter can optionally provide hardware/system metadata using:
+
 ```python
 class SubmitterImplementation(bmt.AI_BMT_Interface):
     def getOptionalData(self) -> Optional_Data:
@@ -84,7 +91,9 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
 ```
 
 ## 5. Start BMT
+
 using following commands in `AI_BMT_GUI_Submitter_Linux_ARM64_Python/` directory.
+
 ```bash
 export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH
 python main.py
