@@ -95,6 +95,6 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
 using following commands in `AI_BMT_GUI_Submitter_Linux_ARM64_Python/` directory.
 
 ```bash
-export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$(pwd)/lib
 python main.py
 ```
