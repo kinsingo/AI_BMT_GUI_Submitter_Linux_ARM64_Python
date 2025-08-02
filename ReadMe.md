@@ -1,6 +1,6 @@
 # AI-BMT Platform — Python Submitter Interface
 
-**Last Updated:** 2025-07-24 : python object memory leak issue was solved.
+**Last Updated:** 2025-08-03
 
 ---
 
