@@ -1,11 +1,9 @@
-# AI-BMT Platform — Python Submitter Interface
-
-**Last Updated:** 2025-08-03
+# AI-BMT Platform — Python Submitter Interface (Added LLM Tasks, Multi-Domain Tasks, and Custom Dataset Evaluation Modes)
+**Last Updated:** 2025-09-03
 
 ---
 
 ## 1. Environment
-
 - ISA(Instruction Set Architecture) : ARM64(aarch64)
 - OS : Ubuntu 22.04 LTS, 24.04 LTS
 - Python Version: **3.8.X ~ 3.12.X supported**
@@ -39,12 +37,8 @@
 ---
 
 ## 3. Project Description
-
-This version of the AI-BMT Platform allows you to implement your submitter in **Python** by inheriting the provided abstract interface `bmt.AI_BMT_Interface`.  
-Once implemented, your model and preprocessing pipeline can be evaluated through the unified GUI interface, just like C++-based submitters.
-
-You can directly modify the **`class SubmitterImplementation(bmt.AI_BMT_Interface)`** in `main.py`.  
-We also provide ONNX Runtime-based example scripts for **Classification**, **Object Detection**, and **Semantic Segmentation** in the `example/` folder.
+1. Implement AI_BMT_Interface to operate with the intended AI Processing Unit (e.g., CPU, GPU, NPU).
+2. Various task example codes are provided. Use these example codes as a reference to implement the interface for the AI Processing Unit.
 
 ---
 
@@ -56,17 +50,25 @@ submitter **must** subclass `bmt.AI_BMT_Interface` and implement the following m
 
 ```python
 class SubmitterImplementation(bmt.AI_BMT_Interface):
-    def Initialize(self, model_path: str) -> None:
-        # Load and initialize your model here
-        ...
 
-    def convertToPreprocessedDataForInference(self, image_path: str) -> VariantType:
-        # Perform image loading and preprocessing here
-        ...
+    # Load and initialize your model here
+    def initialize(self, model_path: str) -> None:
 
-    def runInference(self, data: List[VariantType]) -> List[BMTResult]:
-        # Perform inference and return results
-        ...
+    # return the implemented interface task type. 
+    def getInterfaceType(self) -> InterfaceType:
+
+    #  Vision tasks: preprocessing & inference
+    #  - preprocessVisionData: convert raw image file into model input format
+    #  - inferVision: run inference on preprocessed data and return results
+    def preprocessVisionData(self, image_path: str) -> VariantType:
+    def inferVision(self, data: List[VariantType]) -> List[BMTVisionResult]:
+
+    # LLM tasks: preprocessing & inference
+    # - preprocessLLMData: convert raw input into model input format
+    # - inferLLM: run inference on preprocessed data and return results
+    def preprocessLLMData(self, llmData: LLMPreprocessedInput) -> VariantType:
+    def inferLLM(self, data: List[VariantType]) -> List[BMTLLMResult]:
+     
 ```
 
 ### Optional Interface
@@ -91,7 +93,6 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
 ```
 
 ## 5. Start BMT
-
 using following commands in `AI_BMT_GUI_Submitter_Linux_ARM64_Python/` directory.
 
 ```bash
