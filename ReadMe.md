@@ -1,9 +1,11 @@
-# AI-BMT Platform — Python Submitter Interface (Added LLM Tasks, Multi-Domain Tasks, and Custom Dataset Evaluation Modes)
-**Last Updated:** 2025-09-03
+# AI-BMT Platform — Python Submitter Interface (Added HellaSwag, MMLU LLM Tasks)
+
+**Last Updated:** 2025-10-06
 
 ---
 
 ## 1. Environment
+
 - ISA(Instruction Set Architecture) : ARM64(aarch64)
 - OS : Ubuntu 22.04 LTS, 24.04 LTS
 - Python Version: **3.8.X ~ 3.12.X supported**
@@ -37,6 +39,7 @@
 ---
 
 ## 3. Project Description
+
 1. Implement AI_BMT_Interface to operate with the intended AI Processing Unit (e.g., CPU, GPU, NPU).
 2. Various task example codes are provided. Use these example codes as a reference to implement the interface for the AI Processing Unit.
 
@@ -54,7 +57,7 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
     # Load and initialize your model here
     def initialize(self, model_path: str) -> None:
 
-    # return the implemented interface task type. 
+    # return the implemented interface task type.
     def getInterfaceType(self) -> InterfaceType:
 
     #  Vision tasks: preprocessing & inference
@@ -68,7 +71,7 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
     # - inferLLM: run inference on preprocessed data and return results
     def preprocessLLMData(self, llmData: LLMPreprocessedInput) -> VariantType:
     def inferLLM(self, data: List[VariantType]) -> List[BMTLLMResult]:
-     
+
 ```
 
 ### Optional Interface
@@ -93,6 +96,7 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
 ```
 
 ## 5. Start BMT
+
 using following commands in `AI_BMT_GUI_Submitter_Linux_ARM64_Python/` directory.
 
 ```bash
