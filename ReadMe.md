@@ -1,8 +1,4 @@
-# AI-BMT Platform — Python Submitter Interface
-
-**Last Updated:** 2025-11-20
-
----
+> **Last Updated:** 2025-11-21 (Version 2.0)
 
 ## 1. Environment
 
