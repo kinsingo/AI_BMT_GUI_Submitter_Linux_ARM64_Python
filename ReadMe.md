@@ -1,4 +1,4 @@
-> **Last Updated:** 2026-02-09 (Version 2.2)
+> **Last Updated:** 2026-03-03 (Version 3.3)
 
 ## 1. Environment
 
@@ -79,6 +79,9 @@ class SubmitterImplementation(bmt.AI_BMT_Interface):
 
     # return the implemented interface task type.
     def getInterfaceType(self) -> InterfaceType:
+
+    # Power measurement selection (default: do not measure)
+    def getPowerDeviceType(self) -> PowerDeviceType:
 
     #  Vision tasks: preprocessing & inference
     #  - preprocessVisionData: convert raw image file into model input format
